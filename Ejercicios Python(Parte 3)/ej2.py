@@ -24,20 +24,31 @@ def numbersMasterMindGame():
 
 def startGame():
     str2 = numbersMasterMindGame()
-    str = input("Introduce la serie de numeros para adivinar el numero secreto")
-    allChecked = False
-    while allChecked:
+    print(str2)
+    cont = 0 
+    string = input("Introduce la serie de numeros para adivinar el numero secreto: ")
+    while string != str2:
+       
         for i in str2:
-            for x in str:
-                if i == x and str2.index(i) == str.index(x):
-                    print("Has acertado un numero y en su posicion")
-                elif i == x and str2.index(i) != str.index(x):
+            for x in string:
+                if i == x and str2.index(i) == string.index(x):
+                    cont += 1
+                elif i == x and str2.index(i) != string.index(x):
                     print("Has acertado un número pero no su posición")
                 else: 
                     print("No has acertado nada")
-        if str == str2:
+
+
+        print("Con "+string+" has acertado "+str(cont)+".Intenta adivinar")
+        cont = 0
+        if string == str2:
             print("Has acertado el número. El juego ha terminado")
-            allChecked = True
+            break
+        
+        string = input("Introduce la serie de numeros para adivinar el numero secreto: ")
+       
+    print("El juego ha terminado")
+       
 
     
     
