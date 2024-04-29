@@ -33,24 +33,16 @@ def startGame():
             for x in string:
                 if i == x and str2.index(i) == string.index(x):
                     cont += 1
-                elif i == x and str2.index(i) != string.index(x):
-                    print("Has acertado un número pero no su posición")
-                else: 
-                    print("No has acertado nada")
+                    continue
+                    
 
 
         print("Con "+string+" has acertado "+str(cont)+".Intenta adivinar")
         cont = 0
-        if string == str2:
-            print("Has acertado el número. El juego ha terminado")
-            break
         
         string = input("Introduce la serie de numeros para adivinar el numero secreto: ")
        
-    print("El juego ha terminado")
+    print("Has acertado el número. El juego ha terminado")
        
-
-    
-    
 
 startGame()
