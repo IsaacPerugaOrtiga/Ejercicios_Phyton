@@ -15,8 +15,8 @@ def getTotalQuantity():
     if quantity >= 100:
         print('su gasto iguala o supera los $100.00 y por tantoparticipa en la promoción.'.capitalize())
         print('   COLOR \n BOLA BLANCA \n BOLA ROJA \n BOLA AZUL \n BOLA VERDE \n BOLA AMARILLA \n') 
-        print('   DESCUENTO \n NO TIENE \n 10 POR CIENTO \n 20 POR CIENTO \n 25 POR CIENTO \n 50 POR CIENTO \n') 
-        randomBall()
+        print('   DESCUENTO \n NO TIENE \n 10 POR CIENTO \n 20 POR CIENTO \n 25 POR CIENTO \n 50 POR CIENTO \n')
+        return quantity 
         
         
 
@@ -25,8 +25,12 @@ class Ball:
         self.color = color
         self.discount = discount
 
+    def __str__(self):
+       return f"{self.color} {self.discount}"
+
 
 def randomBall():
+    getTotalQuantity()
     ball = Ball("BLANCA",0)
     ball2 = Ball("ROJA",10)
     ball3 = Ball("AZUL",20)
@@ -38,8 +42,13 @@ def randomBall():
     ball_list.append(ball3)
     ball_list.append(ball4)
     ball_list.append(ball5)
-    randomNumber = random
-    randomNumber.random()
+    y = 0
+    chosenBall = Ball("",0)
+    for i in ball_list:
+        y = random.randrange(5)
+        chosenBall = ball_list[y]
+    print("ALEATORIAMENTE USTED OBTUVO UNA BOLA " + chosenBall.color)
+    print("FELICIDADES, HA GANADO UN " + str(chosenBall.discount) + " DE DESCUENTO")
+    print("SU NUEVO TOTAL A PAGAR ES: "+str(getTotalQuantity * (chosenBall.discount*0.01)))
         
-        
-getTotalQuantity()
+randomBall()
