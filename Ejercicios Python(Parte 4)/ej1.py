@@ -10,8 +10,7 @@ de manera que el programa mostrará un nuevo valor a pagar luego de haber aplica
 
 import random
 
-def getTotalQuantity():
-    quantity = int(input('Introduzca la cantidad total de la compra: ').capitalize())
+def getTotalQuantity(quantity:int):
     if quantity >= 100:
         print('su gasto iguala o supera los $100.00 y por tantoparticipa en la promoción.'.capitalize())
         print('   COLOR \n BOLA BLANCA \n BOLA ROJA \n BOLA AZUL \n BOLA VERDE \n BOLA AMARILLA \n') 
@@ -29,8 +28,7 @@ class Ball:
        return f"{self.color} {self.discount}"
 
 
-def randomBall():
-    getTotalQuantity()
+def randomBall(quantity:int):
     ball = Ball("BLANCA",0)
     ball2 = Ball("ROJA",10)
     ball3 = Ball("AZUL",20)
@@ -49,6 +47,16 @@ def randomBall():
         chosenBall = ball_list[y]
     print("ALEATORIAMENTE USTED OBTUVO UNA BOLA " + chosenBall.color)
     print("FELICIDADES, HA GANADO UN " + str(chosenBall.discount) + " DE DESCUENTO")
-    print("SU NUEVO TOTAL A PAGAR ES: "+str(getTotalQuantity * (chosenBall.discount*0.01)))
+    print("SU NUEVO TOTAL A PAGAR ES: "+str(quantity * (chosenBall.discount*0.01)))
+    decision = str(input("SI DESEA SALIR PULSE 1 O DE LO CONTRARIO PULSE OTRA TECLA: "))
+    while decision != "1":
+        quantity = int(input('Introduzca la cantidad total de la compra: ').capitalize())
+        getTotalQuantity(quantity)       
+        randomBall(quantity)
+    else:
+        exit()
         
-randomBall()
+
+quantity = int(input('Introduzca la cantidad total de la compra: ').capitalize())
+getTotalQuantity(quantity)       
+randomBall(quantity)
