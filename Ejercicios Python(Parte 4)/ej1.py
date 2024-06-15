@@ -13,9 +13,19 @@ import random
 def getTotalQuantity(quantity:int):
     if quantity >= 100:
         print('su gasto iguala o supera los $100.00 y por tantoparticipa en la promoción.'.capitalize())
-        print('   COLOR \n BOLA BLANCA \n BOLA ROJA \n BOLA AZUL \n BOLA VERDE \n BOLA AMARILLA \n') 
-        print('   DESCUENTO \n NO TIENE \n 10 POR CIENTO \n 20 POR CIENTO \n 25 POR CIENTO \n 50 POR CIENTO \n')
+        # Definimos las listas con los nombres y los descuentos
+        colores = ["BOLA BLANCA", "BOLA ROJA", "BOLA AZUL", "BOLA VERDE", "BOLA AMARILLA"]
+        descuentos = ["NO TIENE", "10 POR CIENTO", "20 POR CIENTO", "25 POR CIENTO", "50 POR CIENTO"]
+        # Título de las columnas
+        print(f"{'COLOR':<20}{'DESCUENTO'}")
+
+        # Iteramos a través de los colores y los descuentos para imprimirlos alineados
+        for color, descuento in zip(colores, descuentos):
+            print(f"{color:<20}{descuento}")
         return quantity 
+    else:
+        print('La cantidad introducida no supera los $100.00 y no se puede efectuar ninguna acción')
+        exit()
         
         
 
