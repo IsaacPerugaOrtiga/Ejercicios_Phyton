@@ -9,12 +9,18 @@ def showProductList():
     print("PRODUCTOS\n")
     products = ["CAMISA", "CINTURON", "ZAPATOS", "PANTALON", "CALCETINES","FALDAS","GORRAS","SUETER","CORBATA","CHAQUETA"]
     productsCode = [1,2,3,4,5,6,7,8,9,10]
+    print(products)
+    print(productsCode)
     code = int(input("INTRODUZCA CODIGO: "))
     return code
 
 def searchProductPrice():
     product_list = productList()
-    # for i in product_list:
+    code = showProductList()
+    for i in product_list:
+        if i.codeProduct == code:
+            return i
+
 
 
 
@@ -43,8 +49,23 @@ def productList():
     return product_list
 
 
+def calculateProducts():
+    product = searchProductPrice()
+    print('El precio de '+str(product.descProduct)+' es de '+str(product.price))
+    quantity = int(input('Introduzca la cantidad:'))
+    productPrice = float(product.price)
+    print('El precio total es: '+str((productPrice*quantity)))
+
 class Product:
     def __init__(self,codeProduct:int,descProduct:str,price:float):
         self.codeProduct = codeProduct
         self.descProduct = descProduct
         self.price = price
+
+
+def main(): 
+   calculateProducts()
+
+# Execute main() function
+if __name__ == '__main__':
+    main()
