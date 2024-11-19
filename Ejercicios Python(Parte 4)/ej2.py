@@ -4,6 +4,8 @@ Una variante a este ejercicio que lo haría un poco más complejo sería dar
 la posibilidad de seguir ingresando diferentes códigos de productos con sus respectivas cantidades, 
 y cuando el usuario desee terminar el cálculo de la factura completa con todas sus compras. Te animas??"""
 
+import time
+
 def showProductList():
     print("ELIJA EL PRODUCTO DESEADO\n")
     print("PRODUCTOS\n")
@@ -48,13 +50,35 @@ def productList():
     product_list.append(product10)
     return product_list
 
-
-def calculateProducts():
+def calculateProduct():
     product = searchProductPrice()
     print('El precio de '+str(product.descProduct)+' es de '+str(product.price))
-    quantity = int(input('Introduzca la cantidad:'))
     productPrice = float(product.price)
-    print('El precio total es: '+str((productPrice*quantity)))
+    return productPrice
+    
+
+def calculateAllProducts():
+    product = calculateProduct()
+    quantity = int(input('Introduzca la cantidad:'))
+    print('El precio total es: '+str((product*quantity)))
+    return product*quantity
+
+
+def mainProductsFucntion():
+    calculate = calculateAllProducts()
+   
+    num = int(input('Si desea continuar pulse 1 si no pulse otro numero: '))
+    productPriceTotal = 0
+    while num != 0:
+        if num == 1:
+            calculate += calculateAllProducts()
+            productPriceTotal = calculate
+            print('El precio total de la compra es ' + str(productPriceTotal))
+        else:
+            print('El programa finalizara...')
+            time.sleep(3)
+            exit()
+        num = int(input('Si desea continuar pulse 1 si no pulse otro numero: '))
 
 class Product:
     def __init__(self,codeProduct:int,descProduct:str,price:float):
@@ -64,7 +88,7 @@ class Product:
 
 
 def main(): 
-   calculateProducts()
+   mainProductsFucntion()
 
 # Execute main() function
 if __name__ == '__main__':
